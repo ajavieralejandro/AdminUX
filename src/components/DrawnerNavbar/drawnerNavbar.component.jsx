@@ -17,7 +17,8 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import CourseForm from '../CourseForm/courseform.component';
 import DocentesForm from '../DocentesForm/docentesform.component';
-
+import Noise from "../noise/Noise";
+import GenericForm from "../GenericForm/generic-form.component";
 
 const drawerWidth = 240;
 
@@ -70,7 +71,7 @@ const DrawnerNavBar = () => {
     else if(text==='Docentes')
     setToShow(<DocentesForm />);
     else 
-    setToShow(<DocentesForm title="Alumnos" />);
+    setToShow(<GenericForm WrappedComponent1={Noise} title="Alumnos" />);
     
     if(mobileOpen)
       setMobileOpen(!mobileOpen);
