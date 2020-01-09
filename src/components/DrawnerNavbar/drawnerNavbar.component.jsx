@@ -16,7 +16,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import CourseForm from '../CourseForm/courseform.component';
-import DocentesForm from '../DocentesForm/docentesform.component';
+import DocentesContent from "../DocentesContent/docentescontent.component";
 import Noise from "../noise/Noise";
 import GenericForm from "../GenericForm/generic-form.component";
 
@@ -69,7 +69,7 @@ const DrawnerNavBar = () => {
     if(text==='Cursos')
     setToShow(<CourseForm  title="Cursos" />);
     else if(text==='Docentes')
-    setToShow(<DocentesForm />);
+    setToShow(<GenericForm WrappedComponent1={DocentesContent} WrappedComponent2={Noise} title="Docentes" />);
     else 
     setToShow(<GenericForm WrappedComponent1={Noise} title="Alumnos" />);
     

@@ -6,6 +6,8 @@ import GenericMenu from '../GenericMenu/generic-menu.component';
 import Fade from '@material-ui/core/Fade';
 import Button from '@material-ui/core/Button';
 
+import './generic-form.styles.scss';
+
 
 const GenericForm = ({WrappedComponent1,WrappedComponent2,title}) => {
     const [checked, setchecked] = useState(true);
@@ -33,7 +35,7 @@ const GenericForm = ({WrappedComponent1,WrappedComponent2,title}) => {
       
 
         <Card className="cardForm">
-        <div className="docentesForm">
+        <div className="genericForm">
 
 
         <Typography variant="body2" color="textSecondary" component="div"><h2>Formulario de {title}</h2></Typography>
