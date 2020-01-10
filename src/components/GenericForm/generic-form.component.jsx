@@ -14,8 +14,16 @@ const GenericForm = ({WrappedComponent1,WrappedComponent2,title}) => {
     const [checked1, setchecked1] = useState(false);
     const [checked2, setchecked2] = useState(false);
 
+    //funcion  atras 
+    const handleBack = () => {
+        setchecked(true);
+        setchecked1(false);
+        setchecked2(false);
+
+    }
+
     const handleClick1 = () => {
-        console.log("Estoy llamando a handleClick1");
+        //console.log("Estoy llamando a handleClick1");
         setchecked(false);
         setchecked1(true);
         setchecked2(false);     
@@ -74,6 +82,7 @@ const GenericForm = ({WrappedComponent1,WrappedComponent2,title}) => {
             {!checked? 
                 <div className="Mybutton">
                 <Button
+                onClick={handleBack}
                 size="large" 
                 >
                   Atras

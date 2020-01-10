@@ -18,6 +18,7 @@ import Container from '@material-ui/core/Container';
 import CourseForm from '../CourseForm/courseform.component';
 import DocentesContent from "../DocentesContent/docentescontent.component";
 import Noise from "../noise/Noise";
+import GenericView from "../GenericView/generic-view.component";
 import GenericForm from "../GenericForm/generic-form.component";
 
 const drawerWidth = 240;
@@ -63,13 +64,14 @@ const DrawnerNavBar = () => {
 
 
   const [toShow, setToShow] = useState(<CourseForm title="Cursos"/>);
+  const docentesView = <GenericView title="docente" />;
 
   const handleClick = (text) => {
     
     if(text==='Cursos')
     setToShow(<CourseForm  title="Cursos" />);
     else if(text==='Docentes')
-    setToShow(<GenericForm WrappedComponent1={DocentesContent} WrappedComponent2={Noise} title="Docentes" />);
+    setToShow(<GenericForm WrappedComponent1={GenericView} WrappedComponent2={DocentesContent} title="Docentes" />);
     else 
     setToShow(<GenericForm WrappedComponent1={Noise} title="Alumnos" />);
     
