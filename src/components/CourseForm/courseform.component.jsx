@@ -13,6 +13,7 @@ import Fade from '@material-ui/core/Fade';
 
 //Estilos
 import './courseform.style.scss';
+import CourseContent3 from '../CourseContent/coursecontent3.component';
 
 
 //Por ahora no estoy recibiendo nada
@@ -25,9 +26,9 @@ const CourseForm = (curso) => {
 
    
     const [formTitle,setFormTitle] = useState("");
-    const [checked, setChecked] = useState(true);
+    const [checked, setchecked] = useState(true);
     const [checked2, setchecked2] = useState(false);
-    const [toShow, settoShow] = useState(1);
+    const [checked3, setchecked3] = useState(false);
 
     //Vamos a ver si esto hace lo que quieremos que haga
     const handleNext = () => {
@@ -41,11 +42,19 @@ const CourseForm = (curso) => {
         }
         
         console.log("true");
-        setChecked(false);
+        if(checked){
+            setchecked(false);
         //Linea de refactorizacion
         setchecked2(true);
-        console.log("El valor es : "+toShow);
-        settoShow(toShow+1);
+
+        }
+        if(checked2){
+            setchecked2(false);
+        //Linea de refactorizacion
+            setchecked3(true);
+        }
+        
+       
         return true;
        
        
@@ -54,26 +63,17 @@ const CourseForm = (curso) => {
 
     const handleBack = () => {
         //Esta linea deberia actualizarse en futuras refactorizaciones
-        setChecked(true);
-        setchecked2(false);
-
+        if(checked2){
+            setchecked(true);
+            setchecked2(false);
+        }
+        else if(checked3){
+            setchecked2(true);
+            setchecked3(false);
+        }
+       
     }        
    
-
-
-        const showContent = (state) => {
-        console.log("Estoy invocando la funcion con : ");
-        console.log(state);
-        switch(state) {
-            case  1 :
-              return <CourseContent formTitle={formTitle}   handleChange={handleChange} />
-            case  2:
-              return <CourseContent2 formTitle={formTitle} />
-            default:
-              return null;
-          }
-
-      }
 
 
  
@@ -93,6 +93,11 @@ const CourseForm = (curso) => {
                 <Fade in={checked2}>
                     <div>
                         {checked2?<CourseContent2 formTitle={formTitle} />:null}
+                    </div>
+                </Fade>
+                <Fade in={checked3}>
+                    <div>
+                        {checked3?<CourseContent3 formTitle={formTitle} />:null}
                     </div>
                 </Fade>
                 

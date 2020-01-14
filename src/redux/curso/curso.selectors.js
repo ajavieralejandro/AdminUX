@@ -12,6 +12,26 @@ export const getModulos = createSelector(
     curso => curso.modulos
 )
 
+export const getTitle = createSelector(
+    [cursoSelector],
+    curso => curso.title
+)
+export const getModal = createSelector(
+    [cursoSelector],
+    curso => curso.modal
+)
+
+export const getDuracion = createSelector(
+    [cursoSelector],
+    curso => curso.duracion
+)
+
+export const getDescripcion = createSelector(
+    [cursoSelector],
+    curso => curso.descripcion
+)
+
+
 export const getModulo = id => {
     console.log("Desde el selector me esta llegando : ");
     console.log(id);
@@ -33,4 +53,6 @@ export const getCurrentModuloName = createSelector(
     [cursoSelector],
     curso => curso.moduloName,
 )
+
+
 

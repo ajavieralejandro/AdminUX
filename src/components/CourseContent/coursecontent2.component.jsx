@@ -24,7 +24,7 @@ import { cursoSelector, getCurrentModuloName,getCurrentModulo } from '../../redu
 const CourseContent2 = ({formTitle,title,insertModulo,currentCurso,setCurrentModuloName,modulo,currentModulo}) => {
    
     //Necesito crear una referencia para limpiar el campo en el caso de una nueva insercion
-    const [cont, setcont] = useState(1);
+    const [cont, setcont] = useState(currentCurso.modulos.length+1);
     console.log("El modulo que me esta llegando es : ",modulo);
 
 
