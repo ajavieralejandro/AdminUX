@@ -1,7 +1,7 @@
 import React ,{useState} from 'react';
 import {connect} from 'react-redux';
 import FormLabel from '../formLabel/formLabel.component';
-import {setName,setSecond} from "../../redux/docente/docente.actions";
+import {setName,setSecond,setMail} from "../../redux/docente/docente.actions";
 import TextField from '@material-ui/core/TextField';
 import UploadImage from "../upload-image/upload-image.component";
 import Button from '@material-ui/core/Button';
@@ -15,11 +15,12 @@ import Button from '@material-ui/core/Button';
 import './docentescontent.style.scss';
 
 
-const DocentesContent = ({setName}) => {
+const DocentesContent = ({setName,setSecond,setMail}) => {
     const [image, setimage] = useState(null);
     const [imageBool, setimageBool] = useState(false);
     const [name, setname] = useState('');
-    const [second, setsecond] = useState('')
+    const [second, setsecond] = useState('');
+    const [mail, setmail] = useState('');
 
     const onChangeName = (event) => {
         setname(event.target.value);
@@ -36,6 +37,15 @@ const DocentesContent = ({setName}) => {
     const onBlurName = () => {
         setName(name);
 
+    }
+
+    const onBlurMail = () => {
+        setMail(mail);
+        
+    }
+
+    const onChangeMail =  (event) => {
+        setmail(event.target.value);
     }
 
     const fileSelectHandler = event => {
@@ -60,6 +70,8 @@ const DocentesContent = ({setName}) => {
         <UploadImage route={require('../../../src/avatar.svg')} />
         <FormLabel label="Nombre" focusOut={onBlurName}  handleChange={onChangeName}  />
         <FormLabel label="Apellido" focusOut={onBlurSecond}  handleChange={onChangeSecond}  />
+        <FormLabel label="mail" focusOut={onBlurMail}  handleChange={onChangeMail}  />
+
         <div className="WrapText">
         <TextField
             //defaultValue={currentCurso.descripcion}
@@ -81,7 +93,9 @@ const DocentesContent = ({setName}) => {
 )}
 
 const mapDispatchToProps = dispatch =>({
-    setName : name => dispatch(setName(name))
+    setName : name => dispatch(setName(name)),
+    setSecond : name => dispatch(setSecond(name)),
+    setMail : mail => dispatch(setMail(mail))
     
 })
 

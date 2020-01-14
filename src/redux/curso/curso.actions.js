@@ -64,5 +64,12 @@ export const setCurrentModuloName = modulo => {
     
 }
 
+export const setDocente = docente => {
+    return({
+        type : CursoActionTypes.SET_DOCENTE,
+        payload : docente
+    })
+}
+
 
 

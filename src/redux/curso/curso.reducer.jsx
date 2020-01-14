@@ -8,6 +8,7 @@ const INITIAL_STATE = {
     modal :'',
     duracion:'',
     descripcion:'',
+    docente : null,
     modulos : [],
     modulo : null,
     moduloName : '',
@@ -63,6 +64,12 @@ const cursoReducer = (state = INITIAL_STATE ,action) => {
         return {
             ...state,
             moduloName : action.payload
+        }
+
+        case CursoActionTypes.SET_DOCENTE : 
+        return {
+            ...state,
+            docente : action.payload
         }
 
      

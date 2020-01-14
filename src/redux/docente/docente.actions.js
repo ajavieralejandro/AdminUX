@@ -22,3 +22,10 @@ export const addCurso = curso => {
         payload : curso
     }
 }
+
+export const setMail = mail => {
+    return{
+        type : DocenteActionTypes.SET_MAIL,
+        payload : mail
+    }
+}

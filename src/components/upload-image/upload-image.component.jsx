@@ -25,9 +25,9 @@ const ImageUpload = ({route,setImage,getImage}) => {
         <div>
             <label>
             {image?
-                <img className="pic" src={image} alt="Italian Trulli" />
+                <img className="pic" src={image} alt="Avatar del curso" />
                 :
-                <img className="bigAvatar" src={route} alt="Italian Trulli" />
+                <img className="bigAvatar" src={route} alt="Avatar del curso" />
                 }
             <input className="input-button" type="file" onChange={fileSelectHandler} />
             </label>
