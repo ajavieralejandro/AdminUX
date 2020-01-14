@@ -29,3 +29,8 @@ export const getCurrentModulo = createSelector(
     curso => curso.modulo
 )
 
+export const getCurrentModuloName = createSelector(
+    [cursoSelector],
+    curso => curso.moduloName,
+)
+

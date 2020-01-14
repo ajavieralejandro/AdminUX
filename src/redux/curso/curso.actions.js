@@ -48,17 +48,17 @@ export const setImage = image => {
     })
 }
 
-export const setAlgo = algo =>{
+export const setModulo = modulo =>{
     return({
-        type : CursoActionTypes.SET_ALGO,
-        payload : algo
+        type : CursoActionTypes.SET_MODULO,
+        payload : modulo
     })
 }
 
-export const setCurrentModulo = modulo => {
+export const setCurrentModuloName = modulo => {
     
     return({
-        type : CursoActionTypes.SET_CURRENT_MODULO,
+        type : CursoActionTypes.SET_CURRENT_MODULO_NAME,
         payload : modulo
     })
     

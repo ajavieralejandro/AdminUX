@@ -15,33 +15,47 @@ import {createStructuredSelector} from 'reselect';
 import './coursecontent.style.scss';
 
 //Estado redux
-import {insertModulo,setCurrentModulo,setAlgo} from '../../redux/curso/curso.actions';
-import { cursoSelector, getCurrentModulo } from '../../redux/curso/curso.selectors';
+import {insertModulo,setCurrentModuloName} from '../../redux/curso/curso.actions';
+import { cursoSelector, getCurrentModuloName,getCurrentModulo } from '../../redux/curso/curso.selectors';
 
 
 
 
-const CourseContent2 = ({formTitle,title,insertModulo,currentCurso}) => {
+const CourseContent2 = ({formTitle,title,insertModulo,currentCurso,setCurrentModuloName,modulo,currentModulo}) => {
    
     //Necesito crear una referencia para limpiar el campo en el caso de una nueva insercion
-    const [modulo, setModulo] = useState("");
     const [cont, setcont] = useState(1);
-    const currentModulo = getCurrentModulo;
+    console.log("El modulo que me esta llegando es : ",modulo);
 
 
 const handleClick = () => {
     if(modulo==="")
         alert("No puedo Insertar modulo vacio");
     else{
+        let toIns;
+        if(!currentModulo){
+            //En el caso de que no se este modificando un modulo actual
+            setcont(cont+1);
+             toIns = {
+                index : cont,
+                id : 'm'+cont,
+                modulo : modulo
+            }
 
-        setcont(cont+1);
-        const toIns = {
-            index : cont,
-            id : 'm'+cont,
-            modulo : modulo
         }
+
+        else {
+            toIns = {
+                index : currentModulo.index,
+                id : currentModulo.id,
+                modulo : modulo
+            }
+
+        }
+
         insertModulo(toIns);
-        setModulo("");
+
+       
         //falta la insercion en la base de datos
         
 
@@ -54,17 +68,16 @@ const handleItemClick = (item) => {
     //que se termino de editar el viejo ...
     console.log("EL item que me estan mandando es : ");
     console.log(item);
-    setModulo(item.modulo);
+    //setModulo(item.modulo);
     setcont(item.index);
 }
 
 const handleChange = (event) => {
-    setModulo(event.target.value);
+    setCurrentModuloName(event.target.value);
 
 }
-    console.log("Ahora se viene la verdadera verdad : ");
-    console.log(currentModulo);
-    setAlgo("lala");
+   
+   
 
 
     return(
@@ -78,7 +91,7 @@ const handleChange = (event) => {
             <Container>
       
 
-            <Typography variant="body2" color="textSecondary" component="div"><h2>Modulo {cont}</h2></Typography>
+            <Typography variant="body2" color="textSecondary" component="div"><h2>Modulo {currentModulo?currentModulo.index : cont}</h2></Typography>
 
                 <div className="WrapText">
                 <TextField
@@ -124,11 +137,13 @@ const handleChange = (event) => {
 
 const mapStateToProps = createStructuredSelector({
     currentCurso : cursoSelector,
-    modulo : getCurrentModulo
+    modulo : getCurrentModuloName,
+    currentModulo : getCurrentModulo
 })
 
 const mapDispatchToProps = dispatch =>({
     insertModulo : modulo => dispatch(insertModulo(modulo)),
+    setCurrentModuloName: modulo => dispatch(setCurrentModuloName(modulo))
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(CourseContent2);

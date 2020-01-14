@@ -3,15 +3,15 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import {connect} from 'react-redux';
-import {setCurrentModulo} from "../../redux/curso/curso.actions";
-const ItemModuleList = ({modulo,setCurrentModulo}) => {
+import {setModulo} from "../../redux/curso/curso.actions";
+const ItemModuleList = ({modulo,setModulo}) => {
   console.log("El modulo que me esta llegando es  : ");
   console.log(modulo);
 
   const handleClick = () => {
     console.log("El modulo a insertar es : ");
     console.log(modulo);
-    setCurrentModulo(modulo);
+    setModulo(modulo);
   }
     
 
@@ -39,7 +39,7 @@ const ItemModuleList = ({modulo,setCurrentModulo}) => {
 
 
 const mapDispatchToProps = dispatch =>({
-  setCurrentModulo : modulo => dispatch(setCurrentModulo(modulo))
+  setModulo : modulo => dispatch(setModulo(modulo))
 })
 
 

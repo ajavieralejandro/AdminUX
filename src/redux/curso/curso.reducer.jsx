@@ -1,5 +1,6 @@
 import './curso.types';
 import { CursoActionTypes } from './curso.types';
+import {insertarModulo} from './curso.utils';
 
 //Estado inicial de un formulario al crearse
 const INITIAL_STATE = {
@@ -9,6 +10,7 @@ const INITIAL_STATE = {
     descripcion:'',
     modulos : [],
     modulo : null,
+    moduloName : '',
     image : ''
 };
 
@@ -39,7 +41,9 @@ const cursoReducer = (state = INITIAL_STATE ,action) => {
         case CursoActionTypes.INSERT_MODULO : 
         return {
             ...state,
-            modulos : [...state.modulos,action.payload]
+            modulos : insertarModulo(action.payload,state.modulos),
+            modulo : null,
+            moduloName : ''
         }
 
         case CursoActionTypes.SET_IMAGE : 
@@ -48,11 +52,17 @@ const cursoReducer = (state = INITIAL_STATE ,action) => {
             image : action.payload
             
         }
-        
-        case CursoActionTypes.SET_CURRENT_MODULO :
+
+        case CursoActionTypes.SET_MODULO : 
         return {
             ...state,
-            modulo : action.payload
+            modulo : action.payload,
+            moduloName : action.payload.modulo
+        }        
+        case CursoActionTypes.SET_CURRENT_MODULO_NAME :
+        return {
+            ...state,
+            moduloName : action.payload
         }
 
      
