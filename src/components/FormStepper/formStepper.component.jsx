@@ -5,6 +5,8 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import {addCourseToCollection} from "../../firebase/firebase.utils";
+
 //Estilo
 import './formStepper.style.scss';
 
@@ -44,6 +46,9 @@ const FormStepper = ({onBack,onNext}) => {
         }
         else
             alert("No puedes avanzar ahora");
+        if(activeStep === steps.length - 1){
+          addCourseToCollection(null);
+        }
       };
     
       const handleBack = () => {

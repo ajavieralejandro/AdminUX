@@ -71,7 +71,7 @@ const DrawnerNavBar = () => {
     if(text==='Cursos')
     setToShow(<CourseForm  title="Cursos" />);
     else if(text==='Docentes')
-    setToShow(<GenericForm WrappedComponent1={GenericView} WrappedComponent2={DocentesContent} title="Docentes" />);
+    setToShow(<GenericForm WrappedComponent1={GenericView} WrappedComponent2={DocentesContent} title="Docentes" insertar={true} />);
     else 
     setToShow(<GenericForm WrappedComponent1={Noise} title="Alumnos" />);
     

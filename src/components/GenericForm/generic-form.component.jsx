@@ -9,7 +9,7 @@ import Button from '@material-ui/core/Button';
 import './generic-form.styles.scss';
 
 
-const GenericForm = ({WrappedComponent1,WrappedComponent2,title}) => {
+const GenericForm = ({WrappedComponent1,WrappedComponent2,title,insertar}) => {
     const [checked, setchecked] = useState(true);
     const [checked1, setchecked1] = useState(false);
     const [checked2, setchecked2] = useState(false);
@@ -87,7 +87,19 @@ const GenericForm = ({WrappedComponent1,WrappedComponent2,title}) => {
                 >
                   Atras
                 </Button>
+
+            
+            {
+                //Esto es un parche y va a ser necesario refactorizarlo. 
+                (insertar && checked2)?
+                <Button className="right" size="large" color="primary">
+                 Insertar Docente
+              </Button>: null}
+               
                 </div>: null}
+
+
+            
 
         </Card>
 
