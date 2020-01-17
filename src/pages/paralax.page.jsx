@@ -14,20 +14,19 @@ const ParalaxPage  = (props) => {
         {/* -----basic config-----*/}
       
       
-         
       <Navbar title="Navbar" />
-      <article className="article">
 
       <Parallax
+            className="parallax"
             
             blur={{ min: -15, max: 15 }}
-            bgImage={require('../../src/parallax.jpg')}
+            bgImage={require('../../src/parallax.png')}
             bgImageAlt="the dog"
-            strength={-200}
+            strength={100}
         >
             <div style={{ height: '800px', width:'800px' }} />
+
         </Parallax>
-        </article>
         
       </header>
 

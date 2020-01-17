@@ -16,6 +16,17 @@ const Noise = () =>{
         >
           Learn React
         </a>
+        Lista
+        <ul>
+          <li> Cursos 
+          </li>
+          <li> Equipos
+          </li>
+          <li> Webinars
+          </li>
+          <li> Contacto
+          </li>
+        </ul>
       </section>
     );
 }

@@ -7,19 +7,28 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Hidden from '@material-ui/core/Hidden';
+import Fade from '@material-ui/core/Fade';
+
+
+
 
 
 
 //Styles
 
-import './navbar.style.scss';
+import {OptionsContainer,OptionDiv,StyledGrid,LogoDiv,Drawner,CenterText} from './navbar.styles.jsx';
 
 
 
 
  const Navbar = ({title}) => {
+  const [count, setCount] = useState(0);
+  const [drawner, setdrawner] = useState(false);
 
-  const [count,setCount] = useState(0);
+  const handleClick = () => {
+    setdrawner(true);
+    console.log("El valor es de : ",drawner);
+  }
 
 
   
@@ -40,6 +49,24 @@ import './navbar.style.scss';
 
 return (
     <div className="root">
+
+    <Fade in={drawner}>
+    <div>
+    <Drawner>
+    <CenterText>
+    <OptionDiv>Cursos</OptionDiv>
+    <OptionDiv>Alumnos</OptionDiv>
+    <OptionDiv>Webinars</OptionDiv>
+    <OptionDiv >Equipo</OptionDiv>
+    <OptionDiv >Ingresar</OptionDiv>
+
+    </CenterText>
+    </Drawner>
+    </div>   
+    </Fade>
+  
+
+   
       <CssBaseline />
       <AppBar position="fixed" className="appbar"
       
@@ -49,25 +76,49 @@ return (
         //style={{ transition: '1s ease' }}
         >
         <Toolbar>
-          <Hidden smUp>
+          <Hidden mdUp>
+          <div onClick={handleClick}>
           <IconButton
-            
+          
             color="inherit"
             aria-label="Open drawer"
             edge="start"
             onClick={()=>{}}
             className="menu-button"
           >
+          
             <MenuIcon />
           </IconButton>
+          </div>
           </Hidden>
-          
+          <LogoDiv>
           <Typography variant="h6" noWrap>
-            {title}
+            Agora 3d
           </Typography>
+          </LogoDiv>
+          <Hidden smDown>
+          <StyledGrid container
+          direction="row"
+          justify="flex-end"
+          alignItems="center">
+          <OptionsContainer>
+          <OptionDiv>Cursos</OptionDiv>
+          <OptionDiv>Alumnos</OptionDiv>
+          <OptionDiv>Webinars</OptionDiv>
+          <OptionDiv >Equipo</OptionDiv>
+          <OptionDiv >Ingresar</OptionDiv>
+          
+
+        </OptionsContainer>
+        </StyledGrid>
+        </Hidden>
+        
+         
         </Toolbar>
-      </AppBar>
       
+      </AppBar>
+
+    
    
      
     </div>

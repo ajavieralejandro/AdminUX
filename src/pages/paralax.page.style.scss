@@ -21,12 +21,8 @@
   
       
   }
-  .article{
-    display: block;
-  
-    }
-  
-  
+
+
   
   .section{
     margin:0;
@@ -36,4 +32,21 @@
   .App-link {
     color: #09d3ac;
   }
+
+
+/* Centered text */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 5px;
+}
+
+.react-parallax-bgimage{
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
   
